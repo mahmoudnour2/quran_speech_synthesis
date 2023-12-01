@@ -38,24 +38,24 @@ def buckwalter_to_phonemes(buckw):
     return process_utterance(buckw)
 
 
-def phonemes_to_tokens(phonemes: str, append_space=True):
-    phonemes = phonemes \
-        .replace("sil", "") \
-        .replace("+", "_+_") \
-        .split()
-    for i, phon in enumerate(phonemes):
-        if len(phon) == 2 and phon not in vowels and phon[0] == phon[1]:
-            phonemes[i] = phon[0]
-            phonemes.insert(i+1, DOUBLING_TOKEN)
-        if phonemes[i] in vowels:
-            phonemes[i] = vowel_map[phonemes[i]]
+# def phonemes_to_tokens(phonemes: str, append_space=True):
+#     phonemes = phonemes \
+#         .replace("sil", "") \
+#         .replace("+", "_+_") \
+#         .split()
+#     for i, phon in enumerate(phonemes):
+#         if len(phon) == 2 and phon not in vowels and phon[0] == phon[1]:
+#             phonemes[i] = phon[0]
+#             phonemes.insert(i+1, DOUBLING_TOKEN)
+#         if phonemes[i] in vowels:
+#             phonemes[i] = vowel_map[phonemes[i]]
 
-    if append_space:
-        phonemes.append(SEPARATOR_TOKEN)
+#     if append_space:
+#         phonemes.append(SEPARATOR_TOKEN)
    
-    phonemes.append(EOS_TOKEN)
+#     phonemes.append(EOS_TOKEN)
 
-    return phonemes
+#     return phonemes
 
 
 def buckwalter_to_tokens(buckw, append_space=True):
