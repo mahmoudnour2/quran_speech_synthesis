@@ -48,19 +48,19 @@
 #         os.rename(old_path, new_path)
 
 # print("Files have been renamed.")
-
+###########
 import os
 
 # Set the path to the directory containing your verse_i_bw.lab files
-lab_directory_path = '/home/hamza/Downloads/tts-arabic-pytorch/lab_files_bw'
+lab_directory_path = '/home/hamza/Desktop/quran_speech_synthesis/phones'
 
 # Set the output file path
-output_file_path = '/home/hamza/Downloads/tts-arabic-pytorch/data2/test_buckw.txt'
+output_file_path = '/home/hamza/Desktop/quran_speech_synthesis/data2/train_phon.txt'
 
 # Create or overwrite the output file
 with open(output_file_path, 'w') as output_file:
     # Loop through files from 1 to 700
-    for i in range(1, 701):
+    for i in range(701, 4501):
         lab_filename = f'verse_{i}_bw.lab'
         lab_filename2 = f'verse_{i}_bw.wav'
         lab_filepath = os.path.join(lab_directory_path, lab_filename)
@@ -78,3 +78,28 @@ with open(output_file_path, 'w') as output_file:
             print(f"Lab file not found: {lab_filename}")
 
 print(f"Content has been written to {output_file_path}")
+###########
+
+# import os
+
+# def rename_files(directory_path):
+#     for filename in os.listdir(directory_path):
+#         if filename.startswith("verse_") and filename.endswith("_phon.lab"):
+#             index_str = filename[len("verse_"):-len("_phon.lab")]
+            
+#             try:
+#                 index = int(index_str)
+#                 new_filename = f"verse_{index}_bw.lab"
+#                 old_filepath = os.path.join(directory_path, filename)
+#                 new_filepath = os.path.join(directory_path, new_filename)
+                
+#                 print(f"Renaming: {old_filepath} to {new_filepath}")
+#                 os.rename(old_filepath, new_filepath)
+#                 print("Done.")
+#             except ValueError:
+#                 print(f"Skipping: {filename} - Unable to extract index.")
+
+# if __name__ == "__main__":
+#     directory_path = "/home/hamza/Desktop/quran_speech_synthesis/phones"
+#     rename_files(directory_path)
+
